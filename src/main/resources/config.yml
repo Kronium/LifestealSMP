@@ -1,0 +1,20 @@
+#Config Information for LifestealSMP by HadesDC
+#This is your basic configureation for the LifestealSMP plugin
+
+
+###############################################################
+##### Would you like to enable the plugin on your server?
+###############################################################
+
+Enabled: True
+
+###############################################################
+##### If you would like to change the name of the plugin ingame
+###############################################################
+PluginName: 'LifestealSMP'
+
+String-list:
+  - 'This'
+  - 'Is'
+  - 'A'
+  - 'List'

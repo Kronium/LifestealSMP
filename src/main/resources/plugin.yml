@@ -1,0 +1,6 @@
+name: LifestealSMP
+version: '${project.version}'
+main: com.hadesdc.lifestealsmp.LifestealSMP
+api-version: 1.19
+commands:
+  config:
