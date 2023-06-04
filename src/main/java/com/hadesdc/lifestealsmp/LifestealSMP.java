@@ -1,30 +1,48 @@
+
+
 package com.hadesdc.lifestealsmp;
 
-import com.hadesdc.lifestealsmp.Config.ConfigCommand;
-import com.hadesdc.lifestealsmp.Events.PlayerDeath;
+import com.hadesdc.lifestealsmp.Events.PlayerJoin;
+import com.hadesdc.lifestealsmp.Events.PlayerMYSQL;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
 public final class LifestealSMP extends JavaPlugin {
+    private Database database;
 
     @Override
     public void onEnable() {
-        //registering config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        System.out.println("Loading LifestealSMP by HadesDC");
+        //database registration and connection
+        database = new Database(this);
+        System.out.println("Attempting to connect to database");
+        try {
+            database.connect();
+        } catch (SQLException e) {
+            System.out.println("Unable to connect to the database please make sure it is configured!");
+        }
+        System.out.println(database.isConnected());
 
-        //Logic for player deaths.
-        Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(this), this);
 
-        //logic for player kills
 
-        //config stuffs
-        getCommand("config").setExecutor(new ConfigCommand());
 
     }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        database.disconnect();
+    }
+    public Database getDatabase() {
+        return database;
     }
 }
+

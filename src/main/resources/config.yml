@@ -3,18 +3,12 @@
 
 
 ###############################################################
-##### Would you like to enable the plugin on your server?
+##### Database Settings! THEESE ARE A MUST
 ###############################################################
-
-Enabled: True
-
-###############################################################
-##### If you would like to change the name of the plugin ingame
-###############################################################
-PluginName: 'LifestealSMP'
-
-String-list:
-  - 'This'
-  - 'Is'
-  - 'A'
-  - 'List'
+Mysql:
+  Enabled: true
+  Host: 'localhost'
+  Port: 3306
+  Database: 'lifestealsmp'
+  Username: 'root'
+  Password: ''
